@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clay Campus Growth Advisors</title>
+<style>
+@font-face{font-family:'Roobert';src:url('https://cdn.prod.website-files.com/61477f2c24a826836f969afe/66db6b52701d0cc108d8a17d_Roobert-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Roobert';src:url('https://cdn.prod.website-files.com/61477f2c24a826836f969afe/66db6b5277d9460bfdf91388_Roobert-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Roobert';src:url('https://cdn.prod.website-files.com/61477f2c24a826836f969afe/66db6b52aca9770fe39fc77e_Roobert-SemiBold.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Roobert Mono';src:url('https://cdn.prod.website-files.com/61477f2c24a826836f969afe/69725ade5962e8042ad57238_RoobertMonoVF.woff2') format('woff2');font-weight:300 900;font-style:normal;font-display:swap}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#000;--ink-80:rgba(0,0,0,0.8);--ink-50:rgba(0,0,0,0.5);--ink-20:rgba(0,0,0,0.2);--ink-08:rgba(0,0,0,0.08);--ink-04:rgba(0,0,0,0.04);
+  --bg:#fff;--bg-warm:#F5F3EF;
+  --blue:#429EFF;--blue-soft:rgba(66,158,255,0.1);
+  --tangerine:#FF7714;--tangerine-soft:rgba(255,119,20,0.1);
+  --ube:#A17BF9;--ube-soft:rgba(161,123,249,0.1);
+  --lime:#CBD810;--lime-soft:rgba(203,216,16,0.12);
+  --lemon:#FDBE11;--lemon-soft:rgba(253,190,17,0.12);
+  --pom:#FB4450;--pom-soft:rgba(251,68,80,0.08);
+  --slushie:#3BD3FD;
+  --r-btn:12px;--r-card:16px;--r-pill:100px;
+  --sans:'Roobert',Arial,sans-serif;
+  --mono:'Roobert Mono','SF Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.55;font-size:1rem}
+a{text-decoration:none;color:inherit}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.nav-border{height:1px;background:var(--ink-08);margin:0 32px}
+.nav.scrolled .nav-border{background:var(--ink-20)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:12px 32px;display:flex;align-items:center;justify-content:space-between}
+.logo-img{height:24px;width:auto}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:var(--r-btn);font-family:var(--sans);font-weight:500;font-size:.875rem;line-height:1.3;border:none;cursor:pointer;transition:background .2s,transform .15s,border-color .2s,color .2s,box-shadow .2s;white-space:nowrap}
+.btn:active{transform:scale(.97)}.btn:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.btn-primary{background:var(--ink);color:#fff;border:1px solid var(--ink)}
+.btn-primary:hover{background:#222;box-shadow:0 2px 12px rgba(0,0,0,.12);transform:translateY(-1px)}
+.btn-pill{background:transparent;color:var(--ink);border:1px solid var(--ink-20)}
+.btn-pill:hover{border-color:var(--ink);background:var(--ink-04)}
+.btn-accent{background:transparent;color:var(--tangerine);border:1.5px solid var(--tangerine);border-radius:var(--r-btn)}
+.btn-accent:hover{background:var(--tangerine);color:#fff}
+.btn-blue{background:var(--blue);color:#fff;border:1.5px solid var(--blue)}
+.btn-blue:hover{background:#3590e8;transform:translateY(-1px);box-shadow:0 4px 16px rgba(66,158,255,.3)}
+.btn svg{width:13px;height:13px;transition:transform .2s}.btn:hover svg{transform:translateX(2px)}
+
+.container{max-width:1200px;margin:0 auto;padding:0 32px}
+.divider{height:1px;background:var(--ink-08);margin:0 32px}
+.sec{padding:64px 0}
+.sh{margin-bottom:40px}
+.sh .ey{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:14px}
+.sh h2{font-family:var(--sans);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:600;letter-spacing:-.03em;line-height:1.12;margin-bottom:12px;text-wrap:balance}
+.sh p{font-size:15px;color:var(--ink-50);line-height:1.7;max-width:480px}
+
+.hero{padding:110px 0 56px;margin-top:56px;text-align:center}
+.hero .ey{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink-50);margin-bottom:20px;animation:fu .6s .1s ease both}
+.hero h1{font-family:var(--sans);font-size:clamp(2.5rem,5.5vw,4.25rem);font-weight:600;line-height:1.05;letter-spacing:-.04em;margin-bottom:22px;max-width:760px;margin-left:auto;margin-right:auto;text-wrap:balance;animation:fu .6s .2s ease both}
+.hero h1 .hl{background:var(--ink);color:#fff;padding:2px 14px;border-radius:7px;display:inline-block}
+.hero .sub{font-size:16px;line-height:1.7;color:var(--ink-50);margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto;animation:fu .6s .3s ease both}
+.hero .sub strong{color:var(--ink);font-weight:600}
+.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:fu .6s .35s ease both}
+.hero-badge{margin-top:28px;display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--ink-50);animation:fu .6s .4s ease both}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--lime);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pc{border-radius:var(--r-card);padding:36px;background:var(--bg-warm);border:1px solid var(--ink-08);transition:transform .3s,box-shadow .3s}
+.pc:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(29,28,26,.06)}
+.pl{display:inline-block;padding:4px 12px;border-radius:var(--r-pill);font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px}
+.pc.a .pl{background:var(--lemon-soft);color:#9B7B00}
+.pc.t .pl{background:var(--ube-soft);color:#6D4CD6}
+.pc h3{font-family:var(--sans);font-size:2rem;font-weight:600;letter-spacing:-.04em;line-height:1.1;margin-bottom:12px}
+.pc>p{font-size:14px;color:var(--ink-50);line-height:1.75;margin-bottom:24px}
+.pc>p strong{color:var(--ink);font-weight:600}
+.pb{list-style:none;display:flex;flex-direction:column;gap:10px}
+.pb li{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.65;color:var(--ink-50)}
+.pb li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--ink-20);flex-shrink:0;margin-top:7px}
+.pn{margin-top:24px;padding:16px 20px;border-radius:var(--r-btn);font-size:12px;line-height:1.7;color:var(--ink-50);background:var(--lemon-soft);border-left:3px solid var(--lemon)}
+.pn strong{color:var(--ink)}
+
+.gg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gc{background:var(--bg-warm);border:1px solid var(--ink-08);border-radius:var(--r-card);padding:28px 24px;transition:transform .3s,box-shadow .3s,border-color .3s}
+.gc:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(29,28,26,.06);border-color:var(--ink-20)}
+.gi{width:44px;height:44px;border-radius:var(--r-btn);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:20px}
+.gi1{background:var(--blue-soft)}.gi2{background:var(--tangerine-soft)}.gi3{background:var(--lime-soft)}
+.gi4{background:var(--ube-soft)}.gi5{background:var(--pom-soft)}.gi6{background:rgba(255,112,210,.1)}
+.gc h4{font-size:15px;font-weight:600;margin-bottom:6px}.gc p{font-size:13px;line-height:1.65;color:var(--ink-50)}
+
+.iy{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.tl{display:flex;flex-direction:column;gap:8px}
+.tr{display:flex;align-items:center;gap:12px;background:var(--bg-warm);padding:16px 20px;border-radius:var(--r-btn);border:1px solid var(--ink-08);transition:transform .25s,box-shadow .25s,border-color .25s}
+.tr:hover{transform:translateX(4px);box-shadow:0 4px 16px rgba(29,28,26,.05);border-color:var(--ink-20)}
+.td{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.tr:nth-child(1) .td{background:var(--blue)}.tr:nth-child(2) .td{background:var(--tangerine)}
+.tr:nth-child(3) .td{background:var(--lime)}.tr:nth-child(4) .td{background:var(--ube)}
+.tr:nth-child(5) .td{background:var(--pom)}
+.tr span:last-child{font-size:14px;font-weight:500}
+
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cc{border-radius:var(--r-card);padding:36px 32px;border:1px solid var(--ink-08);background:var(--bg-warm);transition:transform .3s,box-shadow .3s}
+.cc:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(29,28,26,.06)}
+.ct{display:inline-block;padding:4px 12px;border-radius:var(--r-pill);font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+.cc:nth-child(1) .ct{background:var(--tangerine-soft);color:var(--tangerine)}
+.cc:nth-child(2) .ct{background:var(--blue-soft);color:var(--blue)}
+.cc h4{font-family:var(--sans);font-size:1.5rem;font-weight:600;letter-spacing:-.04em;line-height:1.15;margin-bottom:10px}
+.cc p{font-size:13px;line-height:1.7;color:var(--ink-50)}.cc p strong{color:var(--ink)}
+
+.rl{list-style:none;display:flex;flex-direction:column}.rl li{display:flex;align-items:flex-start;gap:14px;font-size:14px;line-height:1.7;padding:14px 0;border-bottom:1px solid var(--ink-08)}
+.rl li:first-child{border-top:1px solid var(--ink-08)}.rn{font-family:var(--mono);font-size:11px;color:var(--ink-20);flex-shrink:0;margin-top:3px}
+
+.fc{padding:24px 0 28px;background:var(--bg)}
+.fcard{background:var(--ink);border-radius:var(--r-card);padding:72px 60px;text-align:center;color:#fff;position:relative;overflow:hidden}
+.fcard::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(255,119,20,.1) 0%,transparent 60%),radial-gradient(ellipse at 80% 100%,rgba(66,158,255,.06) 0%,transparent 50%);pointer-events:none}
+.fl{margin-bottom:28px;display:flex;justify-content:center;position:relative}
+.fl{margin-bottom:28px;display:flex;justify-content:center}
+.fl .a1{width:44px;height:32px;margin-left:-22px}.fl .a2{width:30px;height:24px;margin-left:-15px}
+.fl .a3{width:18px;height:14px;margin-left:-9px}.fl .a4{width:9px;height:8px;margin-left:-4.5px;background:var(--ink)}
+.fcard h2{font-family:var(--sans);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:600;letter-spacing:-.04em;margin-bottom:12px;line-height:1.1;max-width:440px;margin-left:auto;margin-right:auto;text-wrap:balance;position:relative}
+.fcard>p{color:rgba(240,238,234,.5);font-size:14px;margin-bottom:32px;position:relative}
+.fcard .btn{position:relative}
+.fb{max-width:1200px;margin:0 auto;padding:20px 32px 0;text-align:center;font-family:var(--mono);font-size:11px;color:var(--ink-20)}
+
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.an{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.23,1,.32,1),transform .6s cubic-bezier(.23,1,.32,1)}
+.an.v{opacity:1;transform:translateY(0)}
+.an.d1{transition-delay:.07s}.an.d2{transition-delay:.14s}.an.d3{transition-delay:.21s}
+.an.d4{transition-delay:.28s}.an.d5{transition-delay:.35s}
+
+@media(max-width:900px){
+  .pg,.gg,.cg{grid-template-columns:1fr}.iy{grid-template-columns:1fr;gap:32px}
+  .fcard{padding:48px 28px}.container{padding:0 20px}.hero{padding:100px 0 48px}
+  .sec{padding:48px 0}.divider,.nav-border{margin:0 20px}.pc{padding:28px 24px}
+}
+@media(max-width:600px){
+  .hero h1{font-size:2.25rem}.nav-inner{padding:12px 16px}
+  .btn{padding:.5em 1em;font-size:.8rem}.gg{gap:10px}.divider,.nav-border{margin:0 16px}
+}
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo"><img src="https://cdn.prod.website-files.com/61477f2c24a826836f969afe/6778506d788ebf16fef48551_Clay%20primary%20logo.avif" alt="Clay" class="logo-img"></a>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="#program" class="btn btn-pill">Program</a>
+      <a href="#apply" class="btn btn-primary">Apply Now <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+    </div>
+  </div>
+  <div class="nav-border"></div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="ey">Campus Growth Advisors</div>
+    <h1>Help build Clay's first-ever college <span class="hl">ambassador</span> program</h1>
+    <p class="sub">Clay is seeking <strong>founding Campus Growth Advisors</strong> to shape how the next generation of <strong>GTM Engineers</strong> learn, build, and grow on campus.</p>
+    <div class="hero-cta">
+      <a href="#apply" class="btn btn-primary">Apply Now <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+      <a href="#program" class="btn btn-pill">Learn More</a>
+    </div>
+    <div class="hero-badge"><span class="dot"></span> Now accepting applications</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="sec" id="program">
+  <div class="container">
+    <div class="sh an">
+      <div class="ey" style="color:var(--tangerine)">Program Structure</div>
+      <h2>A two-phase journey from learner to leader</h2>
+      <p>Move from hands-on technical training to real strategic impact — all within a single program.</p>
+    </div>
+    <div class="pg">
+      <div class="pc a an d1">
+        <div class="pl">Phase 1</div>
+        <h3>Alpha Forge</h3>
+        <p>Guaranteed admission to <strong>Alpha Forge</strong>, Clay's <strong>4-week, application-only GTME intensive</strong>. Traditionally reserved for industry professionals, this program provides hands-on experience with Clay and the modern GTM technology stack, including tools like <strong>Claude Code</strong>.</p>
+        <ul class="pb">
+          <li>Gain a deep understanding of Clay and modern GTM workflows</li>
+          <li>Learn how today's leading growth teams operate</li>
+          <li>Receive Alpha Forge Certification</li>
+        </ul>
+        <div class="pn">Graduates are added to <strong>Clay's internal GTME talent network</strong> with direct-to-interview access for exclusive roles.</div>
+      </div>
+      <div class="pc t an d2">
+        <div class="pl">Phase 2</div>
+        <h3>Thought Partnership</h3>
+        <p>Collaborate directly with Clay's team to <strong>co-design and launch the campus ambassador program</strong>. This is a <strong>0→1 opportunity</strong> to help build a program from the ground up.</p>
+        <ul class="pb">
+          <li>Contributing 5–10 hours per week leading up to the school year</li>
+          <li>Shaping the strategy and direction of the program</li>
+          <li>Creating digital content and assets</li>
+          <li>Representing Clay at student events and communities</li>
+          <li>Identifying growth opportunities on campus</li>
+          <li>Supporting event planning and execution</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="sec">
+  <div class="container">
+    <div class="sh an">
+      <div class="ey" style="color:var(--tangerine)">What You'll Gain</div>
+      <h2>More than a title on your resume</h2>
+      <p>Real access, real impact, and a direct line to Clay's team and network.</p>
+    </div>
+    <div class="gg">
+      <div class="gc an d1"><div class="gi gi1">&#x1f91d;</div><h4>Direct Thought Partnership</h4><p>Help shape the future of Clay's campus program alongside the team building it.</p></div>
+      <div class="gc an d2"><div class="gi gi2">&#x1f3df;</div><h4>Exclusive Clay Events</h4><p>Invitation to Clay's private events, gatherings, and community experiences.</p></div>
+      <div class="gc an d3"><div class="gi gi3">&#x1f4bb;</div><h4>Platform Access & Credits</h4><p>Full Clay platform access with credits to build, experiment, and learn.</p></div>
+      <div class="gc an d1"><div class="gi gi4">&#x1f381;</div><h4>Clay Merchandise</h4><p>Exclusive merch drops reserved for campus advisors and Clay community leaders.</p></div>
+      <div class="gc an d2"><div class="gi gi5">&#x1f4bc;</div><h4>GTM Job Board Access</h4><p>Early access to GTME and growth roles through Clay's internal talent network.</p></div>
+      <div class="gc an d3"><div class="gi gi6">&#x1f393;</div><h4>Speakers & Mentorship</h4><p>Learn from operators, founders, and Clay team members through exclusive sessions.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="sec">
+  <div class="container">
+    <div class="iy">
+      <div class="sh an" style="margin-bottom:0">
+        <div class="ey" style="color:var(--ube)">Is This You?</div>
+        <h2>We're looking for builders and teachers</h2>
+        <p>You don't need a specific major — just passion, curiosity, and follow-through.</p>
+      </div>
+      <div class="tl">
+        <div class="tr an d1"><span class="td"></span><span>Passionate about sharing and teaching others how to use Clay</span></div>
+        <div class="tr an d2"><span class="td"></span><span>A campus leader with strong communication skills</span></div>
+        <div class="tr an d3"><span class="td"></span><span>Entrepreneurial and curious about new technologies</span></div>
+        <div class="tr an d4"><span class="td"></span><span>A creative thinker who follows through on ideas</span></div>
+        <div class="tr an d5"><span class="td"></span><span>Interested in careers in Growth, GTM Engineering, or Product</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="sec">
+  <div class="container">
+    <div class="sh an">
+      <div class="ey" style="color:var(--blue)">About & Requirements</div>
+      <h2>Built for the next generation of GTM leaders</h2>
+    </div>
+    <div class="cg an d1" style="margin-bottom:32px">
+      <div class="cc"><div class="ct">Selective</div><h4>Application-Based</h4><p>Limited spots available. We're selecting a small, high-impact cohort of founding advisors.</p></div>
+      <div class="cc"><div class="ct">Inclusive</div><h4>Open to All Students</h4><p>Especially those interested in <strong>Growth, GTME, Sales, RevOps, or Product</strong>. All majors welcome.</p></div>
+    </div>
+    <div class="an d2" style="max-width:680px">
+      <ul class="rl">
+        <li><span class="rn">01</span>Currently enrolled as a full-time student</li>
+        <li><span class="rn">02</span>A Clay user or eager to learn the platform</li>
+        <li><span class="rn">03</span>Able to complete Alpha Forge and contribute 5+ hours per week before the school year</li>
+        <li><span class="rn">04</span>Strong written and verbal communication skills</li>
+        <li><span class="rn">05</span>Willing to collaborate with the Clay team and fellow student leaders</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer id="apply">
+  <div class="fc">
+    <div class="container">
+      <div class="fcard an">
+        <div class="fl"><img src="https://cdn.prod.website-files.com/61477f2c24a826836f969afe/6778506d788ebf16fef48551_Clay%20primary%20logo.avif" alt="Clay" style="height:36px;width:auto;filter:brightness(0) invert(1)"></div>
+        <h2>Ready to shape the future of GTM on campus?</h2>
+        <p>Join Clay's founding cohort of Campus Growth Advisors.</p>
+        <a href="#" class="btn btn-blue">Apply Now <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="fb">&copy; 2025 Clay. All rights reserved.</div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>10));
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.an').forEach(el=>{
+  if(el.getBoundingClientRect().top<window.innerHeight)el.classList.add('v');
+  else obs.observe(el);
+});
+</script>
+</body>
+</html>
